@@ -1,13 +1,16 @@
 package com.android.java.miss.restaurant;
 
+import android.graphics.Typeface;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.widget.TextView;
 
 public class HomeActivity extends AppCompatActivity {
+  private TextView textViewLogo;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -15,6 +18,13 @@ public class HomeActivity extends AppCompatActivity {
     getWindow().requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
     setContentView(R.layout.activity_home);
     setStatusBackgroundColor();
+
+    // font path
+    String fontPath = "fonts/BerkshireSwash-Regular.ttf";
+    Typeface tf = Typeface.createFromAsset(getAssets(), fontPath);
+
+    textViewLogo = (TextView) findViewById(R.id.tv_logo);
+    textViewLogo.setTypeface(tf);
   }
 
 
