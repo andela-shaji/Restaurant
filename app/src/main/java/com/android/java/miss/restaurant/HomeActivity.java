@@ -11,11 +11,13 @@ import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.android.java.miss.restaurant.helpers.ActivityLauncher;
 import com.android.java.miss.restaurant.views.SoupActivity;
 
 public class HomeActivity extends AppCompatActivity {
   private TextView textViewLogo;
   private LinearLayout llMenu;
+  private LinearLayout llFeedback;
 
 
   @Override
@@ -38,6 +40,15 @@ public class HomeActivity extends AppCompatActivity {
       public void onClick(View view) {
         Intent menuIntent = new Intent(HomeActivity.this, SoupActivity.class);
         startActivity(menuIntent);
+      }
+    });
+
+    llFeedback = (LinearLayout) findViewById(R.id.feedback_button);
+    llFeedback.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        ActivityLauncher.runIntent(HomeActivity.this, SaladActivity.class);
+        finish();
       }
     });
   }
