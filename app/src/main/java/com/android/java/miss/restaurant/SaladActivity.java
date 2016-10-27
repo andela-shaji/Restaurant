@@ -46,16 +46,18 @@ public class SaladActivity extends AppCompatActivity {
   }
 
   private void initializeData() {
-    ItemModel newItemOne = new ItemModel("Soup Steaming Bread", "Soup Steaming Bread", "$10.00");
-    ItemModel newItemTwo = new ItemModel("Soup Steaming Bread", "Soup Steaming Bread", "$10.00");
-    ItemModel newItemThree = new ItemModel("Soup Steaming Bread", "Soup Steaming Bread", "$10.00");
-    ItemModel newItemFour = new ItemModel("Soup Steaming Bread", "Soup Steaming Bread", "$10.00");
-    ItemModel newItemFive = new ItemModel("Soup Steaming Bread", "Soup Steaming Bread", "$10.00");
+    ItemModel newItemOne = new ItemModel("Vegetable Soup", "Vegetable Soup", "$10.00", "https://images8.alphacoders.com/396/thumb-350-396327.jpg");
+    ItemModel newItemTwo = new ItemModel("Melayamum Soup", "Soup Steaming Bread", "$8.00", "https://images2.alphacoders.com/276/thumb-350-276382.jpg");
+    ItemModel newItemThree = new ItemModel("Pichlsteiner Soup", "Soup Steaming Bread", "$20.00", "https://images6.alphacoders.com/749/thumb-350-749237.jpg");
+    ItemModel newItemFour = new ItemModel("Minestrone Soup", "Soup Steaming Bread", "$35.00", "https://images5.alphacoders.com/407/thumb-1920-407550.jpg");
+    ItemModel newItemFive = new ItemModel("Soup Steaming", "Soup Steaming Bread", "$23.50", "https://images7.alphacoders.com/343/thumb-1920-343425.jpg");
+    ItemModel newItemSix = new ItemModel("Tomato Soup", "Soup Steaming Bread", "$23.50", "https://images.alphacoders.com/435/thumb-350-435913.jpg");
     itemAdapter.add(newItemOne);
     itemAdapter.add(newItemTwo);
     itemAdapter.add(newItemThree);
     itemAdapter.add(newItemFour);
     itemAdapter.add(newItemFive);
+    itemAdapter.add(newItemSix);
 
   }
 }

@@ -49,12 +49,9 @@ public class SoupActivity extends AppCompatActivity implements  NavigationView.O
       ActivityLauncher.runIntent(this, HomeActivity.class);
       finish();
     } else if (id == R.id.nav_feedback) {
-      finish();
     }  else if (id == R.id.nav_booking) {
-      finish();
     }
     else if (id == R.id.nav_contact) {
-      finish();
     }
     DrawerLayout drawer = (DrawerLayout) findViewById(R.id.list_drawer_layout);
     drawer.closeDrawer(GravityCompat.START);
