@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="activity_salad" type="layout">
+        @layout/activity_salad_name
+    </item>
+</resources>

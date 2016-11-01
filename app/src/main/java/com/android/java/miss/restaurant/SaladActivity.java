@@ -1,22 +1,30 @@
 package com.android.java.miss.restaurant;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 
 import com.android.java.miss.restaurant.adapters.ItemAdapter;
+import com.android.java.miss.restaurant.fragments.ItemListFragment;
 import com.android.java.miss.restaurant.helpers.ActivityLauncher;
 import com.android.java.miss.restaurant.helpers.ItemModel;
+import com.android.java.miss.restaurant.views.ItemDetailActivity;
 
 import java.util.ArrayList;
 
-public class SaladActivity extends AppCompatActivity {
+public class SaladActivity extends AppCompatActivity implements ItemListFragment.Callbacks{
+
   private Toolbar toolbar;
   private ListView itemListView;
   private ArrayList<ItemModel> items;
   private ItemAdapter itemAdapter;
+
+  public static final String ITEM_BUNDLE = "ITEM_BUNDLE";
+  private static final int REQUEST_CODE = 1001;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -29,13 +37,24 @@ public class SaladActivity extends AppCompatActivity {
     setTitle("Soup");
 
 
-
-    itemListView = (ListView) findViewById(R.id.listview_item);
+    /*itemListView = (ListView) findViewById(R.id.listview_item);
     items = new ArrayList<>();
     itemAdapter = new ItemAdapter(this, items);
     initializeData();
 
     itemListView.setAdapter(itemAdapter);
+    itemListView.setOnItemClickListener(
+            new AdapterView.OnItemClickListener()
+            {
+              @Override
+              public void onItemClick(AdapterView<?> arg0, View view, int position, long id) {
+
+                ItemModel model = items.get(position);
+                activity.onItemSelected(model);
+              }
+            }
+    );
+*/
 
     toolbar.setNavigationOnClickListener(new View.OnClickListener() {
       @Override
@@ -43,6 +62,7 @@ public class SaladActivity extends AppCompatActivity {
         ActivityLauncher.runIntent(SaladActivity.this, HomeActivity.class);
       }
     });
+
   }
 
   private void initializeData() {
@@ -59,5 +79,42 @@ public class SaladActivity extends AppCompatActivity {
     itemAdapter.add(newItemFive);
     itemAdapter.add(newItemSix);
 
+
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+    return super.onOptionsItemSelected(item);
+  }
+
+ /* @Override
+  public void onItemSelected(ItemModel model) {
+    Bundle b = model.toBundle();
+    Intent intent = new Intent(this, ItemDetailActivity.class);
+    intent.putExtra(ITEM_BUNDLE, b);
+    startActivityForResult(intent, REQUEST_CODE);
+  }*/
+
+
+
+
+ /* public void onItemSelected(ItemModel model) {
+
+    Bundle b = model.toBundle();
+    Intent intent = new Intent(this, ItemDetailActivity.class);
+    intent.putExtra(ITEM_BUNDLE, b);
+    startActivityForResult(intent, REQUEST_CODE);
+
+  }
+*/
+
+  @Override
+  public void onItemSelected(ItemModel item) {
+    Bundle bundle = item.toBundle();
+    Intent intent = new Intent(this, ItemDetailActivity.class);
+    intent.putExtra(ITEM_BUNDLE, bundle);
+    startActivityForResult(intent, REQUEST_CODE);
   }
 }
+
+

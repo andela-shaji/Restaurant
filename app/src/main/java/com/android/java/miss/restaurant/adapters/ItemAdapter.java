@@ -2,7 +2,6 @@ package com.android.java.miss.restaurant.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,25 +14,31 @@ import com.android.java.miss.restaurant.R;
 import com.android.java.miss.restaurant.helpers.ItemModel;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by suadahaji.
  */
 
 public class ItemAdapter extends ArrayAdapter<ItemModel> {
-  private Context context;
 
-  public ItemAdapter(Context context, ArrayList<ItemModel> itemModels) {
-    super(context, 0, itemModels);
+  private Context context;
+  private List<ItemModel> objects;
+  /*public static final String ITEM_BUNDLE = "ITEM_BUNDLE";
+  private static final int REQUEST_CODE = 1001;*/
+
+  public ItemAdapter(Context context, int resource,  List<ItemModel> objects) {
+    super(context, resource, objects);
     this.context = context;
+    this.objects = objects;
+
   }
 
   @NonNull
   @Override
   public View getView(int position, View convertView, ViewGroup parent) {
     // Get the data item for this position
-    ItemModel itemModel = getItem(position);
+    final ItemModel itemModel = objects.get(position);
 
     // Check if an existing view is being reused, otherwise inflate the view
     if (convertView == null) {
@@ -54,8 +59,22 @@ public class ItemAdapter extends ArrayAdapter<ItemModel> {
 
     Picasso.with(context).setLoggingEnabled(true);
 
-    Log.d("Suada", itemModel.getPhoto());
+    /*convertView.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+//        ActivityLauncher.runIntent(context, HomeActivity.class);
+        ActivityLauncher.eventIntent(context, ItemDetailActivity.class, itemModel);
+      }
+    });*/
 
     return convertView;
   }
+
+ /* @Override
+  public void onItemSelected(ItemModel model) {
+    Bundle b = model.toBundle();
+    Intent intent = new Intent(context, ItemDetailActivity.class);
+    intent.putExtra(ITEM_BUNDLE, b);
+    ((Activity)getContext()).startActivityForResult(intent, REQUEST_CODE);
+  }*/
 }
